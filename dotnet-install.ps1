@@ -6,6 +6,7 @@ Invoke-WebRequest -Uri $url -OutFile $output
 ./dotnet8-install.ps1 -Channel LTS -InstallDir 'C:\Program Files\dotnet'
 ./dotnet8-install.ps1  -Channel 8.0 -Runtime windowsdesktop
 ./dotnet8-install.ps1  -Channel 8.0 -Runtime aspnetcore
+Install-Script -Name winget-install -RequiredVersion 2.1.0 -Force 
 $ProgressPreference = "silentlyContinue"; iex ((New-Object System.Net.WebClient).DownloadString('https://tools.veracode.com/veracode-cli/install.ps1'))
 
 $PSurl = "https://github.com/PowerShell/PowerShell/releases/download/v$PSVersion/PowerShell-$PSVersion-win-x64.msi"
