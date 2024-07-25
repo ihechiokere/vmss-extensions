@@ -11,7 +11,7 @@ Invoke-WebRequest -Uri $url -OutFile $output
 ./dotnet8-install.ps1  -Channel 8.0 -Runtime windowsdesktop
 ./dotnet8-install.ps1  -Channel 8.0 -Runtime aspnetcore
 Invoke-WebRequest -Uri $PSurl -OutFile $PSoutput -UseBasicParsing
-msiexec.exe /package PowerShell-v$PSVersion-win-x64.msi /quiet ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=1 ADD_FILE_CONTEXT_MENU_RUNPOWERSHELL=1 ENABLE_PSREMOTING=1 REGISTER_MANIFEST=1 USE_MU=1 ENABLE_MU=1 ADD_PATH=1
+msiexec.exe /package PowerShell-v$PSVersion-win-x64.msi /quiet ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=1 ADD_FILE_CONTEXT_MENU_RUNPOWERSHELL=1 ENABLE_PSREMOTING=0 REGISTER_MANIFEST=1 USE_MU=1 ENABLE_MU=1 ADD_PATH=1
 sleep 120
 Invoke-WebRequest -Uri $JavaUrl -OutFile $JavaOutput -UseBasicParsing
 .\jdk-8u391-windows-x64.exe /s   
