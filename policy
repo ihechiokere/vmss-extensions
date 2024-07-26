@@ -45,10 +45,10 @@
           "description": "example: John Doe"
         }
       },
-      "tag_Build_Date": {
+      "tag_BuildDate": {
         "type": "String",
         "metadata": {
-          "displayName": "Build_Date",
+          "displayName": "BuildDate",
           "description": "example: YYYYMMDD"
         }
       },
@@ -96,7 +96,7 @@
               "exists": "false"
             },
             {
-              "field": "tags['Build_Date']",
+              "field": "tags['BuildDate']",
               "exists": "false"
             },
             {
@@ -118,7 +118,7 @@
     "then": {
       "effect": "deny",
       "details": {
-        "message": "[Enforce VM Resource Tags] Missing required tag. Ensure the following tags are present: 'BuildBy', 'Build_Date', 'Environment', 'Application', 'Update'."
+        "message": "[Enforce VM Resource Tags] Missing required tag. Ensure the following tags are present: 'BuildBy', 'BuildDate', 'Environment', 'Application', 'Update'."
       }
     }
   },
@@ -130,10 +130,10 @@
         "description": "example: John Doe"
       }
     },
-    "tag_Build_Date": {
+    "tag_BuildDate": {
       "type": "String",
       "metadata": {
-        "displayName": "Build_Date",
+        "displayName": "BuildDate",
         "description": "example: YYYYMMDD"
       }
     },
@@ -180,7 +180,7 @@
               "exists": "false"
             },
             {
-              "field": "[concat('tags[', parameters('tag_Build_Date'), ']')]",
+              "field": "[concat('tags[', parameters('tag_BuildDate'), ']')]",
               "exists": "false"
             },
             {
@@ -213,7 +213,7 @@
               "exists": "true"
             },
             {
-              "field": "[concat('tags[', parameters('tag_Build_Date'), ']')]",
+              "field": "[concat('tags[', parameters('tag_BuildDate'), ']')]",
               "exists": "true"
             },
             {
@@ -244,7 +244,7 @@
                   "properties": {
                     "tags": {
                       "[parameters('tag_BuildBy')]": "Not Specified",
-                      "[parameters('tag_Build_Date')]": "Not Specified",
+                      "[parameters('tag_BuildDate')]": "Not Specified",
                       "[parameters('tag_Environment')]": "Not Specified",
                       "[parameters('tag_Application')]": "Not Specified",
                       "[parameters('tag_Update')]": "Not Specified"
@@ -271,10 +271,10 @@
         "description": "example: John Doe"
       }
     },
-    "tag_Build_Date": {
+    "tag_BuildDate": {
       "type": "String",
       "metadata": {
-        "displayName": "Build_Date",
+        "displayName": "BuildDate",
         "description": "example: YYYYMMDD"
       }
     },
