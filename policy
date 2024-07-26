@@ -75,3 +75,88 @@
       }
     }
   }
+
+
+---
+
+
+{
+  "mode": "Indexed",
+  "policyRule": {
+    "if": {
+      "allOf": [
+        {
+          "field": "type",
+          "equals": "Microsoft.Compute/virtualMachines"
+        },
+        {
+          "anyOf": [
+            {
+              "field": "tags['BuildBy']",
+              "exists": "false"
+            },
+            {
+              "field": "tags['Build_Date']",
+              "exists": "false"
+            },
+            {
+              "field": "tags['Environment']",
+              "exists": "false"
+            },
+            {
+              "field": "tags['Application']",
+              "exists": "false"
+            },
+            {
+              "field": "tags['Update']",
+              "exists": "false"
+            }
+          ]
+        }
+      ]
+    },
+    "then": {
+      "effect": "deny",
+      "details": {
+        "message": "[Enforce VM Resource Tags] Missing required tag. Ensure the following tags are present: 'BuildBy', 'Build_Date', 'Environment', 'Application', 'Update'."
+      }
+    }
+  },
+  "parameters": {
+    "tag_BuildBy": {
+      "type": "String",
+      "metadata": {
+        "displayName": "BuildBy",
+        "description": "example: John Doe"
+      }
+    },
+    "tag_Build_Date": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Build_Date",
+        "description": "example: YYYYMMDD"
+      }
+    },
+    "tag_Environment": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Environment",
+        "description": "example: Prod, Dev, Test"
+      }
+    },
+    "tag_Application": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Application",
+        "description": "example: Boomi,ADO"
+      }
+    },
+    "tag_Update": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Update",
+        "description": "example: PROD,DEV,"
+      }
+    }
+  }
+}
