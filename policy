@@ -1,0 +1,41 @@
+{
+  "mode": "All",
+  "policyRule": {
+    "if": {
+      "allOf": [
+        {
+          "field": "type",
+          "equals": "Microsoft.Compute/virtualMachines"
+        },
+        {
+          "anyOf": [
+            {
+              "field": "tags['Environment']",
+              "exists": "false"
+            },
+            {
+              "field": "tags['Owner']",
+              "exists": "false"
+            },
+            {
+              "field": "tags['CostCenter']",
+              "exists": "false"
+            }
+          ]
+        }
+      ]
+    },
+    "then": {
+      "effect": "deny",
+      "details": {
+        "message": "[Enforce VM Resource Tags] Missing required tag. Ensure the following tags are present: 'Environment', 'Owner', 'CostCenter'."
+      }
+    }
+  },
+  "parameters": {},
+  "displayName": "Enforce VM Resource Tags with Notification",
+  "description": "This policy enforces that all virtual machines have the tags 'Environment', 'Owner', and 'CostCenter' and informs users of missing tags.",
+  "metadata": {
+    "category": "Tags"
+  }
+}
