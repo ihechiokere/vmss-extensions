@@ -160,3 +160,144 @@
     }
   }
 }
+
+---
+
+
+{
+  "mode": "Indexed",
+  "policyRule": {
+    "if": {
+      "allOf": [
+        {
+          "field": "type",
+          "equals": "Microsoft.Compute/virtualMachines"
+        },
+        {
+          "anyOf": [
+            {
+              "field": "[concat('tags[', parameters('tag_BuildBy'), ']')]",
+              "exists": "false"
+            },
+            {
+              "field": "[concat('tags[', parameters('tag_Build_Date'), ']')]",
+              "exists": "false"
+            },
+            {
+              "field": "[concat('tags[', parameters('tag_Environment'), ']')]",
+              "exists": "false"
+            },
+            {
+              "field": "[concat('tags[', parameters('tag_Application'), ']')]",
+              "exists": "false"
+            },
+            {
+              "field": "[concat('tags[', parameters('tag_Update'), ']')]",
+              "exists": "false"
+            }
+          ]
+        }
+      ]
+    },
+    "then": {
+      "effect": "deployIfNotExists",
+      "details": {
+        "type": "Microsoft.Resources/tags",
+        "roleDefinitionIds": [
+          "/providers/microsoft.authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7"
+        ],
+        "existenceCondition": {
+          "allOf": [
+            {
+              "field": "[concat('tags[', parameters('tag_BuildBy'), ']')]",
+              "exists": "true"
+            },
+            {
+              "field": "[concat('tags[', parameters('tag_Build_Date'), ']')]",
+              "exists": "true"
+            },
+            {
+              "field": "[concat('tags[', parameters('tag_Environment'), ']')]",
+              "exists": "true"
+            },
+            {
+              "field": "[concat('tags[', parameters('tag_Application'), ']')]",
+              "exists": "true"
+            },
+            {
+              "field": "[concat('tags[', parameters('tag_Update'), ']')]",
+              "exists": "true"
+            }
+          ]
+        },
+        "deployment": {
+          "properties": {
+            "mode": "incremental",
+            "template": {
+              "$schema": "http://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+              "contentVersion": "1.0.0.0",
+              "resources": [
+                {
+                  "type": "Microsoft.Resources/tags",
+                  "apiVersion": "2019-10-01",
+                  "name": "[concat(parameters('tagResourceId'))]",
+                  "properties": {
+                    "tags": {
+                      "[parameters('tag_BuildBy')]": "Not Specified",
+                      "[parameters('tag_Build_Date')]": "Not Specified",
+                      "[parameters('tag_Environment')]": "Not Specified",
+                      "[parameters('tag_Application')]": "Not Specified",
+                      "[parameters('tag_Update')]": "Not Specified"
+                    }
+                  }
+                }
+              ]
+            },
+            "parameters": {
+              "tagResourceId": {
+                "value": "[concat(resourceGroup().id, '/providers/Microsoft.Resources/tags/default')]"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "tag_BuildBy": {
+      "type": "String",
+      "metadata": {
+        "displayName": "BuildBy",
+        "description": "example: John Doe"
+      }
+    },
+    "tag_Build_Date": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Build_Date",
+        "description": "example: YYYYMMDD"
+      }
+    },
+    "tag_Environment": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Environment",
+        "description": "example: Prod, Dev, Test"
+      }
+    },
+    "tag_Application": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Application",
+        "description": "example: Boomi,ADO"
+      }
+    },
+    "tag_Update": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Update",
+        "description": "example: PROD,DEV,"
+      }
+    }
+  }
+}
