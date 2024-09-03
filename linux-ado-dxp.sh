@@ -8,6 +8,8 @@ sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get install -y powershell
 sudo snap install powershell --classic
 sudo apt-get install -y zip
+sudo apt install -y default-jre
+sudo apt install -y default-jdk
 sudo apt-get install -y nodejs
 sudo apt-get install -y npm
 sudo apt-get install -y nuget
