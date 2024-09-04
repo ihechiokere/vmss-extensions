@@ -16,3 +16,5 @@ sudo apt-get install -y nuget
 sudo apt-get install -y dotnet-sdk-8.0
 sudo snap install --classic dotnet-sdk
 rm -rf packages-microsoft-prod.deb
+sudo apt update && sudo apt upgrade -y
+sudo reboot
