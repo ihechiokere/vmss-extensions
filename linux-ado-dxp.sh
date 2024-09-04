@@ -15,6 +15,7 @@ sudo apt-get install -y nodejs
 sudo apt-get install -y npm
 sudo apt-get install -y nuget
 sudo apt-get install -y dotnet-sdk-8.0
+sudo apt-get install -y dotnet-host
 sudo snap install --classic dotnet-sdk
 rm -rf packages-microsoft-prod.deb
 sudo apt upgrade -y
