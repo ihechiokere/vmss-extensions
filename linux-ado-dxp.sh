@@ -1,4 +1,5 @@
 #!/bin/bash
+sudo sed -i 's/#$nrconf{restart} = '"'"'i'"'"';/$nrconf{restart} = '"'"'a'"'"';/g' /etc/needrestart/needrestart.conf
 sudo curl -sL https://deb.nodesource.com/setup_18.x -o nodesource_setup.sh
 sudo bash nodesource_setup.sh 2>&1 >> /tmp/log.txt
 ii=$(grep -w ID /etc/os-release | awk -F= '{print $2}')
