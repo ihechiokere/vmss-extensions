@@ -18,6 +18,6 @@ sudo apt-get install -y dotnet-sdk-8.0
 sudo apt-get install -y dotnet-host
 sudo snap install --classic dotnet-sdk
 sudo rm -rf packages-microsoft-prod.deb
-sleep 30
+sleep 10
 sudo apt-get install -y zip
 
