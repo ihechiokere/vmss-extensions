@@ -9,7 +9,6 @@ sudo dpkg -i packages-microsoft-prod.deb
 sudo apt update
 sudo apt-get install -y powershell
 sudo snap install powershell --classic
-sudo apt-get install -y zip
 sudo apt install -y default-jre
 sudo apt install -y default-jdk
 sudo apt-get install -y nodejs
@@ -17,5 +16,6 @@ sudo apt-get install -y npm
 sudo apt-get install -y nuget
 sudo apt-get install -y dotnet-sdk-8.0
 sudo apt-get install -y dotnet-host
+sudo apt-get install -y zip
 sudo snap install --classic dotnet-sdk
 sudo rm -rf packages-microsoft-prod.deb
