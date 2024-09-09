@@ -16,6 +16,8 @@ sudo apt-get install -y npm
 sudo apt-get install -y nuget
 sudo apt-get install -y dotnet-sdk-8.0
 sudo apt-get install -y dotnet-host
-sudo apt-get install -y zip
 sudo snap install --classic dotnet-sdk
 sudo rm -rf packages-microsoft-prod.deb
+sleep 30
+sudo apt-get install -y zip
+
