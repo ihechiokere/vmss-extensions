@@ -1,4 +1,4 @@
-$PSVersion = "7.4.4"
+$PSVersion = "7.4.5"
 $url = "https://dot.net/v1/dotnet-install.ps1"
 $output = "dotnet8-install.ps1"
 $ProgressPreference = "silentlyContinue"; iex ((New-Object System.Net.WebClient).DownloadString('https://tools.veracode.com/veracode-cli/install.ps1'))
