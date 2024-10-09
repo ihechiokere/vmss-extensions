@@ -18,3 +18,4 @@ Invoke-WebRequest -Uri $JavaUrl -OutFile $JavaOutput -UseBasicParsing
 sleep 120
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Install-Script -Name winget-install -RequiredVersion 2.1.0 -Force 
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
